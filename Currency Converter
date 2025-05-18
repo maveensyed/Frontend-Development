@@ -1,0 +1,42 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Currency Converter</title>
+</head>
+<body>
+    <h1>Currency Converter</h1>
+    <input type="number" id="amount" placeholder="Enter amount">
+    <select id="from-currency">
+        <option value="USD">USD</option>
+        <option value="EUR">EUR</option>
+        <option value="GBP">GBP</option>
+    </select>
+    <select id="to-currency">
+        <option value="USD">USD</option>
+        <option value="EUR">EUR</option>
+        <option value="GBP">GBP</option>
+    </select>
+    <button onclick="convertCurrency()">Convert</button>
+    <p id="result"></p>
+
+    <script>
+        function convertCurrency() {
+            const amount = parseFloat(document.getElementById('amount').value);
+            const fromCurrency = document.getElementById('from-currency').value;
+            const toCurrency = document.getElementById('to-currency').value;
+
+            let result;
+            if (fromCurrency === 'USD' && toCurrency === 'EUR') result = amount * 0.88;
+            else if (fromCurrency === 'USD' && toCurrency === 'GBP') result = amount * 0.76;
+            else if (fromCurrency === 'EUR' && toCurrency === 'USD') result = amount * 1.13;
+            else if (fromCurrency === 'EUR' && toCurrency === 'GBP') result = amount * 0.86;
+            else if (fromCurrency === 'GBP' && toCurrency === 'USD') result = amount * 1.32;
+            else if (fromCurrency === 'GBP' && toCurrency === 'EUR') result = amount * 1.16;
+            else result = amount;
+
+            document.getElementById('result').innerText = `${amount} ${fromCurrency} = ${result.toFixed(2)} ${toCurrency}`;
+        }
+    </script>
+</body>
+</html>
